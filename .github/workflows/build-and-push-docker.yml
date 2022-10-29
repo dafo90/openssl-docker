@@ -1,7 +1,7 @@
 on:
   push:
-    branches:
-      - master
+    # branches:
+    #   - master
     tags:
       - "v*"
 
@@ -30,5 +30,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ github.repository_owner }}/${{ env.APP_NAME }}:latest,${{ github.repository_owner }}/${{ env.APP_NAME }}:v0.0.1
-          #${{ env.APP_VERSION }}
+          tags: ${{ github.repository_owner }}/${{ env.APP_NAME }}:latest,${{ github.repository_owner }}/${{ env.APP_NAME }}:${{ env.APP_VERSION }}
