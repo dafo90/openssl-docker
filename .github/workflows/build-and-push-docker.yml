@@ -7,6 +7,7 @@ on:
 
 name: Build and push Docker to DockerHub
 
+jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
