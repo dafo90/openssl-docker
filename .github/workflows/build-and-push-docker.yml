@@ -9,7 +9,6 @@ name: Build and push Docker to DockerHub
 
 env:
   PROJECT_NAME: ${GITHUB_REPOSITORY#"$GITHUB_REPOSITORY_OWNER"/}
-  APP_NAME: "${PROJECT_NAME%-docker}"
   APP_VERSION: ${GITHUB_REF#"/refs/tags/"}
 
 jobs:
@@ -20,6 +19,8 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - name: Set env APP_NAME
+        run: echo "APP_NAME=${PROJECT_NAME%-docker}" >> $GITHUB_ENV
       - name: Print variables
         run: echo "$GITHUB_REPOSITORY_OWNER $APP_NAME $APP_VERSION"
       # - name: Login to Docker Hub
