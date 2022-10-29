@@ -9,7 +9,7 @@ name: Build and push Docker to DockerHub
 
 env:
   PROJECT_NAME: ${GITHUB_REPOSITORY#"$GITHUB_REPOSITORY_OWNER"/}
-  APP_NAME: ${PROJECT_NAME%-docker}
+  APP_NAME: "${PROJECT_NAME%-docker}"
   APP_VERSION: ${GITHUB_REF#"/refs/tags/"}
 
 jobs:
