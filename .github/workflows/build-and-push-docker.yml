@@ -16,7 +16,7 @@ jobs:
       - name: Set env APP_NAME
         run: echo "APP_NAME=${PROJECT_NAME%-docker}" >> $GITHUB_ENV
       - name: Set env APP_VERSION
-        run: echo "APP_VERSION=${GITHUB_REF#/refs/tags/}" >> $GITHUB_ENV
+        run: echo "APP_VERSION=${GITHUB_REF#\/refs\/tags\/}" >> $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
