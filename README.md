@@ -1,9 +1,21 @@
 # OpenSSL Docker
 
-Simple OpenSSL Docker container running in Alpine Linux
+Simple OpenSSL Docker container.
 
-## Usage
+## Docker compose (example)
 
 ```
-docker run -ti --rm -v $(pwd):/certs -w /certs dafo90/openssl <openssl_command>
+version: '3.9'
+
+services:
+  openssl:
+    image: dafo90/openssl
+    volumes:
+      - ./certs:/certs
+    environment:
+      DAYS: 3650
+      PASSWORD: "pass:MySuperSecretPassword"
+      KEYSTORE: keystoreFileName
+      PRIVATE_KEY_NAME: privateKeyName
+      KEYSTORE_TYPE: JKS
 ```
