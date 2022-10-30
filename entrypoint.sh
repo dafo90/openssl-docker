@@ -10,6 +10,8 @@ readonly OUT="${OUT:-cacert.pem}"
 readonly KEYSTORE_TYPE="${KEYSTORE_TYPE:-none}" # NONE | PKCS12 | JKS
 readonly KEYSTORE="${KEYSTORE:-identity}"
 readonly PRIVATE_KEY_NAME="${PRIVATE_KEY_NAME:-identity}"
+readonly OVERWRITE="${OVERWRITE:-false}"
+
 
 function existsInList {
     LIST=$1
@@ -36,6 +38,11 @@ if [ -z "${PASSWORD}" ] && [ "$KEYSTORE_TYPE" != "NONE" ]
 then
     echo "In order to generate a KeyStore you need to provide a PASSWORD"
     exit 1
+fi
+
+if [ "$OVERWRITE" = "true" ]
+then
+    rm -rf /certs/*
 fi
 
 if [ -z "${PASSWORD}" ]
